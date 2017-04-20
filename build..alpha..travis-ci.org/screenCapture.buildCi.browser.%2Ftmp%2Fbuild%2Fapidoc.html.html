@@ -1,0 +1,134 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="http://pellepim.bitbucket.org/jstz/">jstimezonedetect (v1.0.6)</a>
+</h1>
+<h4>This script gives you the zone info key representing your device's time zone setting. The return value is an IANA zone info key (aka the Olson time zone database).</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.jstimezonedetect">module jstimezonedetect</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.jstimezonedetect.determine">
+            function <span class="apidocSignatureSpan">jstimezonedetect.</span>determine
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">jstimezonedetect.</span>olson</span>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.jstimezonedetect" id="apidoc.module.jstimezonedetect">module jstimezonedetect</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.jstimezonedetect.determine" id="apidoc.element.jstimezonedetect.determine">
+        function <span class="apidocSignatureSpan">jstimezonedetect.</span>determine
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function determine() {
+    var preliminary_tz = get_from_internationalization_api();
+
+    if (!preliminary_tz) {
+        preliminary_tz = jstz.olson.timezones[lookup_key()];
+
+        if (typeof consts.AMBIGUITIES[preliminary_tz] !== 'undefined') {
+            preliminary_tz = get_by_dst(preliminary_tz);
+        }
+    }
+
+    return {
+        name: function () {
+            return preliminary_tz;
+        }
+    };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  has native support or well maintained libraries that support it).
+
+## Example Use
+
+Invoke the script by calling
+
+    :::javascript
+        var tz = jstz.<span class="apidocCodeKeywordSpan">determine</span>();
+        tz.name();
+        'Europe/Berlin'
+
+## Use Case
+
+The script is useful if you do not want to disturb your users with questions
+about what time zone they are in. You can rely on this script to give you a
+...</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
